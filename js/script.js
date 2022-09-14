@@ -35,7 +35,8 @@ const app = new Vue(
         el: '#app',
         data: {
             activeIndex: 0,
-            slides
+            slides,
+            intervalId: undefined
         },
         /* created e mounted fanno partire la funzione al caricamento della pagina
             created quando non è nel DOM, mounted quando è nel DOM
@@ -44,17 +45,37 @@ const app = new Vue(
         },
         */
         mounted() {
-            setInterval(this.nextIndex, INTERVAL_SECONDS * 1000);
+            this.createInterval()
         },
         methods: {
+            deleteInterval() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId)
+                }
+            },
+            createInterval() {
+                this.intervalId = setInterval(this.nextIndex, INTERVAL_SECONDS * 1000);
+            },
             previousIndex: function () {
                 this.activeIndex === 0 ? this.activeIndex = slides.length - 1 : this.activeIndex--;
             },
             nextIndex: function () {
                 this.activeIndex === slides.length - 1 ? this.activeIndex = 0 : this.activeIndex++;
             },
+            onNextClick() {
+                this.nextIndex();
+                this.deleteInterval();
+                this.createInterval();
+            },
+            onPrevClick() {
+                this.previousIndex();
+                this.deleteInterval();
+                this.createInterval();
+            },
             getImage: function (thumbIndex) {
                 this.activeIndex = thumbIndex;
+                this.deleteInterval();
+                this.createInterval();
             }
         }
     }
