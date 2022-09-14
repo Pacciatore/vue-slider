@@ -37,6 +37,15 @@ const app = new Vue(
             activeIndex: 0,
             slides
         },
+        /* created e mounted fanno partire la funzione al caricamento della pagina
+            created quando non è nel DOM, mounted quando è nel DOM
+        created: function(){
+            setInterval(this.nextIndex, INTERVAL_SECONDS * 1000);
+        },
+        */
+        mounted() {
+            setInterval(this.nextIndex, INTERVAL_SECONDS * 1000);
+        },
         methods: {
             previousIndex: function () {
                 this.activeIndex === 0 ? this.activeIndex = slides.length - 1 : this.activeIndex--;
@@ -51,4 +60,3 @@ const app = new Vue(
     }
 )
 
-setInterval(app.nextIndex, INTERVAL_SECONDS * 1000);
