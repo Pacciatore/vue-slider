@@ -15,11 +15,10 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div @mouseover="deleteInterval" @mouseleave="createInterval" class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img @mouseover="deleteInterval" @mouseleave="createInterval" :src="slides[activeIndex].image"
-                        :alt="slides[activeIndex].title" />
+                    <img :src="slides[activeIndex].image" :alt="slides[activeIndex].title" />
                     <div class="text">
                         <h3>{{ slides[activeIndex].title }}</h3>
                         <p>{{ slides[activeIndex].text }}</p>
