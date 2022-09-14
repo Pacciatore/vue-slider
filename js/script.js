@@ -34,6 +34,21 @@ const app = new Vue(
         data: {
             activeIndex: 0,
             slides
+        },
+        methods: {
+            previousIndex: function () {
+                this.activeIndex === 0 ? this.activeIndex = slides.length - 1 : this.activeIndex--;
+                console.log(this.activeIndex);
+
+                console.log('click');
+            },
+            nextIndex: function () {
+                this.activeIndex === slides.length - 1 ? this.activeIndex = 0 : this.activeIndex++;
+                console.log(this.activeIndex)
+
+                console.log('click')
+            }
+
         }
     }
 )
