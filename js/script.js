@@ -41,6 +41,9 @@ const app = new Vue(
             },
             nextIndex: function () {
                 this.activeIndex === slides.length - 1 ? this.activeIndex = 0 : this.activeIndex++;
+            },
+            getImage: function (thumbIndex) {
+                this.activeIndex = thumbIndex;
             }
         }
     }
