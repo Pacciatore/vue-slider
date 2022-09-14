@@ -28,6 +28,8 @@ const slides = [
 
 console.log(slides);
 
+const INTERVAL_SECONDS = 3;
+
 const app = new Vue(
     {
         el: '#app',
@@ -49,3 +51,4 @@ const app = new Vue(
     }
 )
 
+setInterval(app.nextIndex, INTERVAL_SECONDS * 1000);
