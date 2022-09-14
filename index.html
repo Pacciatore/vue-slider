@@ -18,7 +18,8 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img :src="slides[activeIndex].image" :alt="slides[activeIndex].title" />
+                    <img @mouseover="deleteInterval" @mouseleave="createInterval" :src="slides[activeIndex].image"
+                        :alt="slides[activeIndex].title" />
                     <div class="text">
                         <h3>{{ slides[activeIndex].title }}</h3>
                         <p>{{ slides[activeIndex].text }}</p>
